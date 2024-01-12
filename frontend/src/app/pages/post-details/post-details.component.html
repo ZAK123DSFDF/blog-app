@@ -1,0 +1,23 @@
+<app-header />
+<div class="flex flex-col w-[50%] m-auto mt-6 gap-6 items-start">
+  <div class="font-bold">{{ PostsDetails.title }}</div>
+  <div>{{ PostsDetails.createdAt | date : "medium" }}</div>
+  <div class="">{{ PostsDetails.author.username }}</div>
+  @if (auth.username===PostsDetails.author.username) {
+  <button
+    class="bg-slate-700 text-white px-3 py-3 self-center rounded-md"
+    [routerLink]="['/edit-post', PostsDetails._id]"
+  >
+    edit this post
+  </button>
+  }
+
+  <div class="w-full m-auto relative h-96">
+    <img
+      fill
+      [ngSrc]="Post.imgBaseUrl + PostsDetails.cover"
+      class="aspect-square object-cover"
+    />
+  </div>
+  <div>{{ PostsDetails.content }}</div>
+</div>

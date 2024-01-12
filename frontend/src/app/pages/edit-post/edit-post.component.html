@@ -1,0 +1,43 @@
+<app-header />
+@if (post.singlePost) {
+<form
+  class="w-[50%] h-screen flex flex-col m-auto items-center justify-center gap-3"
+  #editPost="ngForm"
+  (ngSubmit)="editForm()"
+>
+  <textarea
+    type="text"
+    name="title"
+    rows="5"
+    class="custom-input w-[100%] px-3"
+    placeholder="type your title here..."
+    [ngModel]="post.singlePost.title"
+    required
+  ></textarea>
+  <textarea
+    type="text"
+    name="content"
+    rows="10"
+    class="custom-input w-[100%] px-3"
+    placeholder="type your desc here..."
+    [ngModel]="post.singlePost.content"
+    required
+  ></textarea>
+
+  <input
+    type="file"
+    name="file"
+    class="self-start"
+    ngModel
+    (change)="onFileSelected($event)"
+    #fileInput
+  />
+
+  <button
+    type="submit"
+    class="bg-slate-600 rounded-lg p-5 w-60 text-white self-start"
+  >
+    submit
+  </button>
+</form>
+}
