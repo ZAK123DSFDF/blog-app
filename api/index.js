@@ -64,7 +64,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
 app.use("/api/post/upload", upload.single("file"), postRouterUpload);
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "public")));
 app.use("/", async (req, res) => {
   try {
     res.json("hello from server");
